@@ -233,42 +233,24 @@
                     </div>
                 </div>
                 <div class="md:hidden">
-                    <button id="mobile-menu-btn" class="text-gray-700 hover:text-red-500">
-                        <i class="fas fa-bars text-xl"></i>
-                    </button>
-                </div>
+    <button id="mobile-menu-btn" class="text-gray-700 hover:text-red-500">
+        <i class="fas fa-bars text-xl"></i>
+    </button>
+</div>
             </div>
         </div>
         <!-- Mobile menu -->
-        <div id="mobile-menu"
-            class="md:hidden hidden bg-gradient-to-b from-blue-50 to-white border-t border-blue-200 shadow-lg">
-            <div class="px-4 pt-4 pb-6 space-y-2">
-                <a href="#"
-                    class="block px-4 py-3 text-gray-700 hover:text-blue-600 hover:bg-white rounded-lg transition-all duration-300 shadow-sm"
-                    onclick="showPage('home')">الرئيسية</a>
-                <a href="#"
-                    class="block px-4 py-3 text-gray-700 hover:text-blue-600 hover:bg-white rounded-lg transition-all duration-300 shadow-sm"
-                    onclick="showPage('about')">من أنا؟</a>
-                <a href="#"
-                    class="block px-4 py-3 text-gray-700 hover:text-blue-600 hover:bg-white rounded-lg transition-all duration-300 shadow-sm"
-                    onclick="showPage('courses')">البرامج</a>
-                <a href="#"
-                    class="block px-4 py-3 text-gray-700 hover:text-blue-600 hover:bg-white rounded-lg transition-all duration-300 shadow-sm"
-                    onclick="showPage('pricing')">الأسعار</a>
-                <a href="#"
-                    class="block px-4 py-3 text-gray-700 hover:text-blue-600 hover:bg-white rounded-lg transition-all duration-300 shadow-sm"
-                    onclick="showPage('transformations')">تطورات المشتركين</a>
-                <a href="#"
-                    class="block px-4 py-3 text-gray-700 hover:text-blue-600 hover:bg-white rounded-lg transition-all duration-300 shadow-sm"
-                    onclick="showPage('gallery')">المعرض</a>
-                <a href="#"
-                    class="block px-4 py-3 text-gray-700 hover:text-blue-600 hover:bg-white rounded-lg transition-all duration-300 shadow-sm"
-                    onclick="showPage('faq')">الأسئلة الشائعة</a>
-                <a href="#"
-                    class="block px-4 py-3 text-gray-700 hover:text-blue-600 hover:bg-white rounded-lg transition-all duration-300 shadow-sm"
-                    onclick="showPage('contact')">اتصل بنا</a>
-            </div>
-        </div>
+       <div id="mobile-menu" class="hidden bg-gradient-to-r from-blue-50 to-blue-100 border-2 border-blue-200 rounded-2xl mt-3 p-4 space-y-3 shadow-lg">
+    <a href="#" class="block text-slate-700 hover:text-blue-600" onclick="showPage('home'); toggleMobileMenu()">الرئيسية</a>
+    <a href="#" class="block text-slate-700 hover:text-blue-600" onclick="showPage('about'); toggleMobileMenu()">من أنا؟</a>
+    <a href="#" class="block text-slate-700 hover:text-blue-600" onclick="showPage('courses'); toggleMobileMenu()">البرامج</a>
+    <a href="#" class="block text-slate-700 hover:text-blue-600" onclick="showPage('pricing'); toggleMobileMenu()">الأسعار</a>
+    <a href="#" class="block text-slate-700 hover:text-blue-600" onclick="showPage('transformations'); toggleMobileMenu()">تطورات المشتركين</a>
+    <a href="#" class="block text-slate-700 hover:text-blue-600" onclick="showPage('gallery'); toggleMobileMenu()">المعرض</a>
+    <a href="#" class="block text-slate-700 hover:text-blue-600" onclick="showPage('faq'); toggleMobileMenu()">الأسئلة الشائعة</a>
+    <a href="#" class="block text-slate-700 hover:text-blue-600" onclick="showPage('contact'); toggleMobileMenu()">اتصل بنا</a>
+</div>
+
     </nav>
 
     <!-- Home Page -->
@@ -1919,31 +1901,10 @@
         }
 
         // Content Management Functions
-        function toggleEditMode() {
-            if (!isOwner) {
-                showNotification('يجب تسجيل الدخول كمالك أولاً!', 'error');
-                return;
-            }
-
-            editMode = !editMode;
-            const editBtn = document.getElementById('edit-btn');
-
-            const logoutBtn = document.getElementById('logout-btn');
-
-            if (editMode) {
-                editBtn.innerHTML = '<i class="fas fa-save mr-1"></i>حفظ';
-                editBtn.classList.remove('bg-gray-200', 'hover:bg-gray-300', 'text-gray-700');
-                editBtn.classList.add('bg-green-500', 'hover:bg-green-600', 'text-white');
-                logoutBtn.classList.remove('hidden');
-                enableEditing();
-            } else {
-                editBtn.innerHTML = '<i class="fas fa-edit mr-1"></i>تحرير';
-                editBtn.classList.remove('bg-green-500', 'hover:bg-green-600', 'text-white');
-                editBtn.classList.add('bg-gray-200', 'hover:bg-gray-300', 'text-gray-700');
-                saveContent();
-                disableEditing();
-            }
-        }
+        function toggleMobileMenu() {
+    const mobileMenu = document.getElementById('mobile-menu');
+    mobileMenu.classList.add('hidden'); // يخفي القائمة بعد ما تختار أي رابط
+}
 
         function enableEditing() {
             // Make text elements editable
@@ -2121,13 +2082,13 @@
 
         // Mobile menu
         function setupMobileMenu() {
-            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-            const mobileMenu = document.getElementById('mobile-menu');
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
 
-            mobileMenuBtn.addEventListener('click', () => {
-                mobileMenu.classList.toggle('hidden');
-            });
-        }
+    mobileMenuBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+    });
+}
 
         // Course filtering
         function filterCourses(category) {
